@@ -1,4 +1,8 @@
+# Build files
+*.pyc
+
 # Data
 *.xls
 *.xlsx
 *.csv
+
