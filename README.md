@@ -4,4 +4,4 @@ This project aims to create tools that can be used by members of the University 
 
 # Description
 
-Once we've built more we'll describe how it all works here!
+The energy use data is imported from a csv file into a class called EnergyUse. EnergyUse_Class.py defines this class and its functions. BasicExample.py shows how these can be called.
