@@ -7,7 +7,7 @@ class EnergyUse:
     def __init__(self):
         pass
 
-    def import_systems_link_data(self,filename,strip_empty=False):
+    def import_systems_link_data(self,filename):
         """
         Inputs: a path to a .csv file from the systemslink bulk data export
         Outputs: a list of dictionaries, each one corresponding to a different meter.
@@ -41,11 +41,7 @@ class EnergyUse:
                     "Values":values,
                 }
                 # Append this to the first list of dictionaries
-                if strip_empty:
-                    if not sum(values)==0:
-                        dicts.append(day_dict)
-                else:
-                    dicts.append(day_dict)
+                dicts.append(day_dict)
                 
             # Sort the dictionaries by reference code, then by date
             sorted_dicts = sorted(dicts, key = lambda x: (x["Reference Number"], x["Datetimes"][0]))

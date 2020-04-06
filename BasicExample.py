@@ -11,7 +11,7 @@ from EnergyUse_Class import EnergyUse
 # Extract data from csv
 
 Dicts = EnergyUse()
-Dicts.import_systems_link_data('MSM subs Jan+Feb20.csv',True)
+Dicts.import_systems_link_data('MSM subs Jan+Feb20.csv')
 
 
 print(len(Dicts.data))
@@ -31,6 +31,6 @@ print(len(Dicts.data))
 
 
 #%%
-Dicts.plot_all()
+#Dicts.plot_all()
 
 
