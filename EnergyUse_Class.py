@@ -69,10 +69,19 @@ class EnergyUse:
             
             
     def clean(self,empty, neg):
-        # A function to remove invalid data, should be some flexibility about what is removed (see issue #1)
-        pass
-        
-        
+        """
+        A function to remove invalid data, should be some flexibility about what is removed (see issue #1)
+        empty - Binary flag to select if empty data is removed (True) or not (False)
+        neg - Binary flag to select if negative data is removed (True) or not (False)
+        """
+        if empty:
+            self.data= [i for i in self.data if not all(v==0 for v in i["Values"])]
+
+        if neg:
+            self.data= [i for i in self.data if not any(v <0 for v in i["Values"])]
+
+
+       
     def filter(self,start_date, end_date):
         # A function to filter data to a given date range (see issue #2)
         pass

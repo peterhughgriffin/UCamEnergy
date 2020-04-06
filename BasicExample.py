@@ -13,8 +13,11 @@ from EnergyUse_Class import EnergyUse
 Dicts = EnergyUse()
 Dicts.import_systems_link_data('MSM subs Jan+Feb20.csv',True)
 
+Dicts.clean(True, True)
+
+print(len(Dicts.data))
+
 
 Dicts.plot_all()
     
-
 
