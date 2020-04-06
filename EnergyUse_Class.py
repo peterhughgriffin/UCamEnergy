@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import datetime
+from datetime import datetime as dt
+from datetime import timedelta as td
 
 class EnergyUse:
     """Main Data class"""
@@ -25,9 +26,9 @@ class EnergyUse:
                 # For each line, create a dictionary with all the info
                 data = line[:].split(",")
                 datetimes=np.empty(48,dtype=object)
-                datetime_start=datetime.datetime.strptime(data[6], '%d/%m/%Y')
+                datetime_start=dt.strptime(data[6], '%d/%m/%Y')
                 for i in range(48):
-                    datetimes[i] = datetime_start + datetime.timedelta(minutes=30*i)            
+                    datetimes[i] = datetime_start + td(minutes=30*i)            
                 values=[float(number) for number in data[7:7+48]]
                 day_dict = {
                     "Data Set Type":data[0],
@@ -36,7 +37,7 @@ class EnergyUse:
                     "Reference Number":data[3],
                     "MPAN":data[4],
                     "Meter Serial Number":data[5],
-                    "Date":data[6],
+                    "Date":datetime_start,
                     "Datetimes":datetimes,
                     "Values":values,
                 }
@@ -79,6 +80,14 @@ class EnergyUse:
 
        
     def filter(self,start_date, end_date):
-        # A function to filter data to a given date range (see issue #2)
+        """A function to filter data to a given date range (see issue #2)
+        start_date - The start of the filtered data
+        end_date - The end date of the filtered data
+        """
+        start_date = dt.strptime(start_date, '%d/%m/%Y')
+        end_date = dt.strptime(end_date, '%d/%m/%Y')
+        
+        
+        
         pass
         

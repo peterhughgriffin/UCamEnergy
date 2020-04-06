@@ -33,4 +33,4 @@ print(len(Dicts.data))
 #%%
 #Dicts.plot_all()
 
-
+Dicts.data[0]['Datetimes']
