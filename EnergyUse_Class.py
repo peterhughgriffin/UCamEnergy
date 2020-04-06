@@ -75,7 +75,7 @@ class EnergyUse:
         neg - Binary flag to select if negative data is removed (True) or not (False)
         """
         if empty:
-            self.data= [i for i in self.data if not all(v==0 for v in i["Values"])]
+            self.data= [i for i in self.data if all(v!=0 for v in i["Values"])]
 
         if neg:
             self.data= [i for i in self.data if not any(v <0 for v in i["Values"])]

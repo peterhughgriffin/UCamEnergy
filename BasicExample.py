@@ -13,11 +13,24 @@ from EnergyUse_Class import EnergyUse
 Dicts = EnergyUse()
 Dicts.import_systems_link_data('MSM subs Jan+Feb20.csv',True)
 
-Dicts.clean(True, True)
 
 print(len(Dicts.data))
 
 
+#%% Remove data with only zero valued results
+
+Dicts.clean(True, False)
+
+print(len(Dicts.data))
+
+#%% Remove data with any negative valued results
+
+Dicts.clean(False, True)
+
+print(len(Dicts.data))
+
+
+#%%
 Dicts.plot_all()
-    
+
 
