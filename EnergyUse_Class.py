@@ -37,7 +37,6 @@ class EnergyUse:
                     "Reference Number":data[3],
                     "MPAN":data[4],
                     "Meter Serial Number":data[5],
-                    "Date":datetime_start,
                     "Datetimes":datetimes,
                     "Values":values,
                 }
@@ -67,7 +66,7 @@ class EnergyUse:
             
     def clean(self,empty, neg):
         """
-        A function to remove invalid data, should be some flexibility about what is removed (see issue #1)
+        A function to remove invalid data, should be some flexibility about what is removed
         empty - Binary flag to select if empty data is removed (True) or not (False)
         neg - Binary flag to select if negative data is removed (True) or not (False)
         """
@@ -87,7 +86,23 @@ class EnergyUse:
         start_date = dt.strptime(start_date, '%d/%m/%Y')
         end_date = dt.strptime(end_date, '%d/%m/%Y')
         
+        # Check if start_date is less than end date
+#        if end_date - start_date <= 0
         
         
-        pass
+        if self.data[0]['Datetimes'][0]>end_date:
+            raise ValueError('Specified dates are out of range of the data.')
+
+        if self.data[0]['Datetimes'][0]<start_date:
         
+            if self.data[0]['Datetimes'][-1]<end_date:
+                print('Data ends before requested end date.')
+                end_date=self.data[0]['Datetimes'][-1]
+            
+            
+            
+                
+        
+            
+        
+                

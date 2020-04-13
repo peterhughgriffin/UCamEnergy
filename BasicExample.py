@@ -31,6 +31,6 @@ print(len(Dicts.data))
 
 
 #%%
-#Dicts.plot_all()
+Dicts.plot_all()
 
-Dicts.data[0]['Datetimes']
+#Dicts.data[0]['Datetimes']
