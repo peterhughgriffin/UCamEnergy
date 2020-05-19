@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May 19 10:44:28 2020
+
+@author: peter
+"""
+
+
+
+import requests
+
+LOGIN_URL='https://cam.energymanagerlive.com/'
+URL = 'https://cam.energymanagerlive.com/DataSet/GetMeterDetails/?Id=8507&selectTabName=Profile%20Data'
+
+CredFile=open('Credentials.txt','r')
+
+Creds=CredFile.readlines()
+
+CredFile.close()
+
+payload = {"UserName": Creds[0], "Password": Creds[1]}
+
+# page=requests.get(URL,payload)
+
+# Use 'with' to ensure the session context is closed after use.
+with requests.Session() as s:
+    p = s.post(LOGIN_URL, data=payload)
+    # print the html returned or something more intelligent to see if it's a successful login page.
+    print (p.text)
+
+    # An authorised request.
+    r = s.get(URL)
+    print (r.text)
+        # etc...
+
+
+
+
+
