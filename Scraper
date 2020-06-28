@@ -9,6 +9,9 @@ Created on Tue May 19 10:44:28 2020
 
 
 import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
 
 LOGIN_URL='https://cam.energymanagerlive.com/'
 URL = 'https://cam.energymanagerlive.com/DataSet/GetMeterDetails/?Id=8507&selectTabName=Profile%20Data'
@@ -21,11 +24,13 @@ CredFile.close()
 
 payload = {"UserName": Creds[0], "Password": Creds[1]}
 
-# page=requests.get(URL,payload)
+
+# page=requests.post(Login_URL,payload)
+# page2=requests.post(URL)
 
 # Use 'with' to ensure the session context is closed after use.
 with requests.Session() as s:
-    p = s.post(LOGIN_URL, data=payload)
+    p = s.post(LOGIN_URL, data=payload,verify=False)
     # print the html returned or something more intelligent to see if it's a successful login page.
     print (p.text)
 
